@@ -7,16 +7,22 @@
 //
 
 #import "secondViewController.h"
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface secondViewController ()
-
+@property (weak, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 @end
 
 @implementation secondViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     if ([FBSDKAccessToken currentAccessToken]) {
+          // User is logged in, do work such as go to next view controller.
+     }
     // Do any additional setup after loading the view.
+self.loginButton.readPermissions = @[@"name", @"email", @"picture"];
 }
 
 - (void)didReceiveMemoryWarning {
